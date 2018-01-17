@@ -1,0 +1,24 @@
+@model IEnumerable<MovieCineplex.Models.EnquiryEvents>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Event Records</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(i => item.Events.Information)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

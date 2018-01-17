@@ -1,0 +1,67 @@
+@*@model IEnumerable<MovieCineplex.Models.Reservation>*@
+
+@{
+    ViewData["Title"] = "Checkout";
+}
+@section scripts
+{
+    @*ref:http://jquerycreditcardvalidator.com/*@
+    <script src="~/js/jquery.creditCardValidator.js"></script>
+    <script>
+        $(function () {
+            $('#creditCard').validateCreditCard(function (result) {
+                document.getElementById("numbercheck").value = result.valid;
+                $('.log').html('Card type: ' + (result.card_type == null ? '-' : result.card_type.name)
+                    + '<br>Valid: ' + result.valid);
+            });
+        });
+    </script>
+}
+
+<h2>Checkout</h2>
+<h4>$ @ViewData["pay"]</h4>
+
+<form asp-action="Edit" onsubmit="return paymentcheck()">
+    <h4>Payment details</h4>
+
+    <ul>
+        <li>
+            <label>Credit Card number <input id="creditCard"></label>
+            <p class="log"></p>
+            <input type="hidden" name="numbercheck" id="numbercheck" readonly>
+            <input type="hidden" name="logintest" id="logintest" value="@ViewData["logintest"]" readonly>
+            <label>Expiry Date</label>
+            <select id="expiryMonth" name="expiryMonth" style="width:80px; display:inline;" class="form-control">
+                <option value="">mm</option>
+                <option value="01">01</option>
+                <option value="02">02</option>
+                <option value="03">03</option>
+                <option value="04">04</option>
+                <option value="05">05</option>
+                <option value="06">06</option>
+                <option value="07">07</option>
+                <option value="08">08</option>
+                <option value="09">09</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+            </select>
+            /
+            <select id="expiryYear" name="expiryYear" style="width:80px; display:inline;" class="form-control">
+                <option value="">yy</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+                <option value="21">21</option>
+                <option value="22">22</option>
+                <option value="23">23</option>
+                <option value="24">24</option>
+                <option value="25">25</option>
+            </select>
+        </li>
+        <li>
+            <input type="submit" value="Pay" class="btn btn-default" />
+        </li>
+    </ul>
+</form>

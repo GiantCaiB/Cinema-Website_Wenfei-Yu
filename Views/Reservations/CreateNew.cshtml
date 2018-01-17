@@ -1,0 +1,43 @@
+﻿@model MovieCineplex.Models.Reservation
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>SELECT YOUR SEAT</h2>
+
+<form asp-action="Create" onsubmit="return capcheck()">
+    <div class="form-horizontal">
+        <h4>Reservation</h4>
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <div class="col-md-10">
+                <input type="hidden" asp-for="EnquiryId" class="form-control" value="@ViewData["userid"]" readonly />
+                <input type="hidden" id="cap" name="cap" class="form-control" value="@ViewData["Cap"]" readonly />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="SeatId" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-for="SeatId" class="form-control" asp-items="ViewBag.SeatId"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="SessionId" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="SessionId" class="form-control" value="@ViewData["sessionid"]" readonly />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

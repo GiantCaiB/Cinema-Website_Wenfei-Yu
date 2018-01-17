@@ -1,0 +1,47 @@
+@model IEnumerable<MovieCineplex.Models.Reservation>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>User Purcharse History</h2>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Movie
+            </th>
+            <th>
+                Location
+            </th>
+            <th>
+                Time
+            </th>
+            <th>
+                Seat Number
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Session.Movie.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Session.Cineplex.Location)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Session.MovieTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SeatId)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

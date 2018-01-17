@@ -1,0 +1,19 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<h2>User Center</h2>
+
+
+<form asp-action="UserResInfo" onsubmit="return logincheck()">
+    <h4>Purcharse History</h4>
+    <input type="hidden" name="logincheck" id="logincheck" value="@ViewData["logintest"]" readonly>
+    <input type="submit" value="Check" class="btn btn-default" />
+</form>
+
+<form asp-controller="EnquiryEvents" asp-action="Index" onsubmit="return logincheck()">
+    <h4>Event History</h4>
+    <input type="hidden" name="logincheck" id="logincheck" value="@ViewData["logintest"]" readonly>
+    <input type="submit" value="Check" class="btn btn-default" />
+</form>

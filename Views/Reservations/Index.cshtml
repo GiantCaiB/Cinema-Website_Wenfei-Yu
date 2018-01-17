@@ -1,0 +1,62 @@
+﻿@model IEnumerable<MovieCineplex.Models.Reservation>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Shopping Cart</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Movie
+            </th>
+            <th>
+                Location
+            </th>
+            <th>
+                Time
+            </th>
+            <th>
+                Price
+            </th>
+            <th>
+                Seat Number
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Session.Movie.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Session.Cineplex.Location)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Session.MovieTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Session.Movie.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SeatId)
+                </td>
+                <td>
+                    <a asp-action="Delete" asp-route-id="@item.ReservationId">Remove from Shopping Cart</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+    <h3>
+        <a asp-action="Checkout" asp-route-tickettype="1" asp-route-suncount="@ViewData["itemnumber"]">Check Out</a>
+    </h3>
+    <h3>
+        <a asp-action="Checkout" asp-route-tickettype="2" asp-route-suncount="@ViewData["itemnumber"]">Check Out As Concession</a>
+    </h3>
+    

@@ -1,0 +1,26 @@
+@model MovieCineplex.Models.SessionTime
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>SessionTime</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MovieTime)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MovieTime)
+        </dd>
+      </dl>
+    <p>
+        <a asp-action="CreateNew" asp-route-movie="@Model.MovieId" asp-route-cineplex="@Model.CineplexId" asp-route-time="@Model.MovieTime">Create New</a>
+    </p>
+</div>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

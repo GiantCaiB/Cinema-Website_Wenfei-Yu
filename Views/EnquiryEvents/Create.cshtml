@@ -1,0 +1,30 @@
+@model MovieCineplex.Models.EnquiryEvents
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Book this event</h2>
+
+<form name="loginform" asp-action="Create" onsubmit="return check1()">
+    <div class="form-horizontal">
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <h4>@ViewData["eventInfo"]</h4>
+                <input name="logininput" type="hidden" class="form-control" value="@ViewData["logintest"]" readonly />
+                <input type="hidden" asp-for="EventsId" class="form-control" value="@ViewData["event"]" readonly />
+                <input type="submit" value="Book" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-controller="EventsInfoes" asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

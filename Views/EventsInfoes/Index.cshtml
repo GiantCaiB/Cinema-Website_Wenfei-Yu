@@ -1,0 +1,31 @@
+@model IEnumerable<MovieCineplex.Models.EventsInfo>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>FIND MORE FUN WITH US</h2>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Information)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Information)
+            </td>
+            <td>
+                <a asp-controller="EnquiryEvents" asp-action="Create" asp-route-id="@item.EventsId">Book This Event</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
